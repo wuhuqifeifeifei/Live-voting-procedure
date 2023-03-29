@@ -127,7 +127,7 @@ class VoteCount extends Component {
         orient: "horizontal",
         left: "center",
         min: 100,
-        max: 10000,
+        max: 2800,
         // Map the score column to color
         dimension: 0,
         inRange: {

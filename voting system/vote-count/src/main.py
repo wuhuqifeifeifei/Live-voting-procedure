@@ -18,7 +18,7 @@ app.add_middleware(
 @app.get("/sta")
 async def sta():
     print('value')
-    return {'value': random.randint(0, 1000)}
+    return {'value': random.randint(0, 100)}
 
 
 @app.post('/name')
