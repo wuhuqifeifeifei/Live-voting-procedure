@@ -13,14 +13,11 @@ class VoteCount extends Component {
 
   generateInitialData = () => {
     const data = [];
-    for (let i = 0; i < 10; i++) {
-      name().then((res) => {
-        console.log(res.data.name);
-        data.push({
-          name: res.data.name,
-          value: 0,
-          color: "",
-        });
+    for (let i = 0; i < 20; i++) {
+      data.push({
+        name: `${i + 1}`,
+        value: 0,
+        color: "",
       });
     }
     return data;
@@ -40,6 +37,9 @@ class VoteCount extends Component {
       value().then((res) => {
         item.value += res.data.value;
         console.log(res.data.value);
+      });
+      name().then((res) => {
+        console.log(res);
       });
       item.color = rgb();
     });
@@ -88,17 +88,14 @@ class VoteCount extends Component {
       yAxis: [
         {
           axisLabel: {
-            //data.name未完成（传值和应用）
-            formatter: function (value, index) {
-              console.log(data);
-              console.log(value);
-              if (index > 6) {
-                return `{idx1|${10 - index}} {title|${data.name}`;
+            formatter: (value, index) => {
+              // console.log("data.name=" + data[index].name);
+              if (index > 16) {
+                return `{idx1|${20 - index}} {title|${data[index].name}}`;
               } else {
-                return `{idx0|${10 - index}} {title|${data.name}}`;
+                return `{idx0|${20 - index}} {title|${data[index].name}}`;
               }
             },
-
             rich: {
               idx0: {
                 color: "rgba(100,200,0,1)",
@@ -126,6 +123,17 @@ class VoteCount extends Component {
           type: "category",
         },
       ],
+      visualMap: {
+        orient: "horizontal",
+        left: "center",
+        min: 100,
+        max: 10000,
+        // Map the score column to color
+        dimension: 0,
+        inRange: {
+          color: ["#65B581", "#FFCE34", "#FD665F"],
+        },
+      },
       series: [
         {
           label: {
@@ -136,33 +144,36 @@ class VoteCount extends Component {
           name: "票数",
           borderRadius: 30,
           type: "bar",
-
-          color: new echarts.graphic.LinearGradient( //颜色不同未完成
-            0,
-            0,
-            1,
-            0,
-            [
-              {
-                offset: 0,
-                color: "#FFF",
-              },
-              {
-                offset: 0.98,
-                color: "#6495ed",
-              },
-            ],
-            false
-          ),
-          data: data.map((item) => item.value),
-          animationDelay: (idx) => idx * 50,
-          animationDuration: 1500,
+          height: 100,
+          color: (index) => {
+            console.log(index);
+            return new echarts.graphic.LinearGradient( //颜色不同未完成
+              0,
+              0,
+              1,
+              0,
+              [
+                {
+                  offset: 0,
+                  color: "#FFF",
+                },
+                {
+                  offset: 0.98,
+                  color: data[index].color,
+                },
+              ],
+              false
+            );
+          },
+          data: data.map((item) => item),
+          animationDelay: (idx) => idx * 1,
+          animationDuration: 1000,
         },
       ],
       animationEasing: "elasticOut",
-      animationDelayUpdate: (idx) => idx * 5,
+      animationDelayUpdate: (idx) => idx * 1,
     };
-    return <ReactEcharts option={option} style={{ height: 400 }} />;
+    return <ReactEcharts option={option} style={{ height: 700 }} />;
   }
 }
 
