@@ -6,7 +6,6 @@
         <el-aside width="200px">
           <div class="button"><el-button type="primary" @click="start">开始投票</el-button></div>
           <div class="button"><el-button type="primary" @click="stop">结束投票</el-button></div>
-          <div class="button"><el-button type="primary" @click="update">更新票数</el-button></div>
           <div class="button"><el-button type="primary" @click="dispaly">打开图表</el-button></div>
         </el-aside>
         <el-main>
@@ -19,7 +18,7 @@
 
 <script>
 import TableData from './components/TableData.vue'
-import { Start, Stop, getData } from './utils/api'
+import { Start, Stop } from './utils/api'
 export default {
   name: 'App',
   components: {
@@ -27,17 +26,13 @@ export default {
   },
   methods: {
     start() {
-      Start()
+      Start().then(() => {
+        console.log("Succeed to start!")
+      })
     },
     stop() {
-      Stop()
-    },
-    update() {
-      getData().then(res => {
-        console.log(res.data);
-        for (var key in res.data) {
-          this.info[key].name = res.data[key]
-        }
+      Stop().then(() => {
+        console.log("Succeed to stop!")
       })
     },
     display() {

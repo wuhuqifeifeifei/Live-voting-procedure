@@ -2,6 +2,7 @@
   <e-row :gutter="20" style="height: 80px;">
     <e-col :span="6"> <el-input style="width: 35%" v-model="newItem.name" placeholder="请输入新增选手姓名" /></e-col>
     <e-col :span="6"><el-button type="primary" plain @click="addItem">新增</el-button></e-col>
+    <e-col :span=6><el-button type="primary" plain @click="update">更新票数</el-button></e-col>
   </e-row>
   <el-table :data="info" style="width: 100%">
     <el-table-column label="序号" style="width:20%">
@@ -25,6 +26,7 @@
 </template>
 
 <script>
+import { getData } from '@/utils/api';
 var _index;
 export default {
   name: 'TableData',
@@ -85,6 +87,20 @@ export default {
     }
   },
   methods: {
+    //更新数据
+    update() {
+      getData().then(res => {
+        console.log(res.data);
+        for (let key in res.data) {
+          for (let item of this.info) {
+            if (item.name === key) {
+              item.votes = res.data[key];
+              break
+            }
+          }
+        }
+      })
+    },
     //新增数据
     addItem() {
       this.info.push({
