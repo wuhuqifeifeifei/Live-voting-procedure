@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactEcharts from "echarts-for-react";
 import { value } from "./requests/value";
-import { trySSE } from "./try"; //---------------------------------------
+//import { trySSE } from "./try"; //---------------------------------------
 
 class VoteCount extends Component {
   state = {
@@ -11,7 +11,7 @@ class VoteCount extends Component {
   };
   generateInitialData = () => {
     const data = [];
-    trySSE(); //-----------------------------------------------------------
+    //trySSE(); //-----------------------------------------------------------
     for (let i = 0; i < 15; i++) {
       data.push({
         name: `${i + 1}`,
