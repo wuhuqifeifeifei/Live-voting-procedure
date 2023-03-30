@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from starlette.requests import Request
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
 from Spider import spider
 import threading
 import uvicorn
@@ -13,6 +14,16 @@ stop_flag = threading.Event()
 danmu = spider(room_id, stop_flag)
 data = {}
 template = Jinja2Templates('pages')
+
+app.add_middleware(
+    CORSMiddleware,
+
+    allow_origins=["*"],
+
+    allow_credentials=True,
+
+    allow_methods=['*']
+)
 
 
 # admin默认入口：admin面板，单文件main.py无法访问，最终项目整合时去除注释
@@ -85,4 +96,4 @@ async def reset():
     return {"msg": "process reset"}
 
 if __name__ == '__main__':
-    uvicorn.run(app)
+    uvicorn.run(app, 4000)
