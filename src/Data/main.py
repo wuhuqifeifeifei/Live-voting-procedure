@@ -21,7 +21,7 @@ template = Jinja2Templates('pages')
 #     return template.TemplateResponse('index.html', {"request": request})
 
 
-# chart入口：chart界面，，单文件main.py无法访问，最终项目整合时去除注释
+# chart入口：chart界面，单文件main.py无法访问，最终项目整合时去除注释
 # @app.get("/chart")
 # async def chart(request: Request):
 #     return template.TemplateResponse('chart.html', {"request": request})
