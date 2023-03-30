@@ -8,7 +8,7 @@ import uvicorn
 
 # initialize
 app = FastAPI()
-room_id = 123            # room_id = input("请输入房间号：")
+room_id = 685026           # room_id = input("请输入房间号：")
 stop_flag = threading.Event()
 danmu = spider(room_id, stop_flag)
 data = {}
