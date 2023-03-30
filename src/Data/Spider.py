@@ -3,6 +3,7 @@ import zlib
 from aiowebsocket.converses import AioWebSocket
 import json
 
+
 class spider():
     def __init__(self, room_id,stop_flag):
         self.remote = 'ws://broadcastlv.chat.bilibili.com:2244/sub'

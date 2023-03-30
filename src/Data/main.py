@@ -1,13 +1,22 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from starlette.requests import Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from Spider import spider
 import threading
 import uvicorn
 
+
 # initialize
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=['*']
+)
+
 room_id = 123            # room_id = input("请输入房间号：")
 stop_flag = threading.Event()
 danmu = spider(room_id, stop_flag)
@@ -81,7 +90,27 @@ async def reset():
     stop_flag.set()
     data = {}
     danmu.Hashmap = {}
-    danmu.ans = {}
+    danmu.ans = {
+            '章湘粤': 0,
+            '雷昌昊': 0,
+            '曾健一': 0,
+            '段欢宸': 0,
+            '张馨鑫': 0,
+            '哈力木拉提·艾力、王奕番': 0,
+            '何佩恩': 0,
+            '王梓源': 0,
+            '王正一': 0,
+            '马胜楠': 0,
+            '赵华': 0,
+            '万大千': 0,
+            '赖可颖': 0,
+            '王彦澄': 0,
+            '李伟铭': 0,
+            '凌越恒': 0,
+            '玛迪娜·叶尔卡提': 0,
+            '朱寳麗': 0,
+            '戴领': 0,
+            '杨方杰': 0}
     return {"msg": "process reset"}
 
 if __name__ == '__main__':
