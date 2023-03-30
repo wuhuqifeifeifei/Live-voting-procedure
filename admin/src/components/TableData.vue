@@ -87,19 +87,24 @@ export default {
     }
   },
   methods: {
+    inTime() {
+
+    },
     //更新数据
     update() {
-      getData().then(res => {
-        console.log(res.data);
-        for (let key in res.data) {
-          for (let item of this.info) {
-            if (item.name === key) {
-              item.votes = res.data[key];
-              break
+      window.setInterval(() => {
+        getData().then(res => {
+          console.log(res.data);
+          for (let key in res.data) {
+            for (let item of this.info) {
+              if (item.name === key) {
+                item.votes = res.data[key];
+                break
+              }
             }
           }
-        }
-      })
+        })
+      }, 500)
     },
     //新增数据
     addItem() {
