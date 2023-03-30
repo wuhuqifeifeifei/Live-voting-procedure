@@ -2,7 +2,7 @@
   <e-row :gutter="20" style="height: 80px;">
     <e-col :span="6"> <el-input style="width: 35%" v-model="newItem.name" placeholder="请输入新增选手姓名" /></e-col>
     <e-col :span="6"><el-button type="primary" plain @click="addItem">新增</el-button></e-col>
-    <e-col :span=6><el-button type="primary" plain @click="update">更新票数</el-button></e-col>
+    <e-col :span=6><el-button type="primary" plain @click="update">同步票数</el-button></e-col>
   </e-row>
   <el-table :data="info" style="width: 100%">
     <el-table-column label="序号" style="width:20%">
