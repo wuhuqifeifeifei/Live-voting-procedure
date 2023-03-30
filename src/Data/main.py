@@ -96,4 +96,4 @@ async def reset():
     return {"msg": "process reset"}
 
 if __name__ == '__main__':
-    uvicorn.run(app, 4000)
+    uvicorn.run(app, port=4000)
