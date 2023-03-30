@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ReactEcharts from "echarts-for-react";
 import { value } from "./requests/value";
 import { name } from "./requests/name";
-import * as echarts from "echarts";
 
 class VoteCount extends Component {
   state = {
@@ -127,7 +126,7 @@ class VoteCount extends Component {
         orient: "horizontal",
         left: "center",
         min: 100,
-        max: 2000,
+        max: 1000,
         // Map the score column to color
         dimension: 0,
         inRange: {
@@ -145,26 +144,6 @@ class VoteCount extends Component {
           borderRadius: 30,
           type: "bar",
           height: 100,
-          color: (index) => {
-            console.log(index);
-            return new echarts.graphic.LinearGradient( //颜色不同未完成
-              0,
-              0,
-              1,
-              0,
-              [
-                {
-                  offset: 0,
-                  color: "#FFF",
-                },
-                {
-                  offset: 0.98,
-                  color: data[index].color,
-                },
-              ],
-              false
-            );
-          },
           data: data.map((item) => item),
           animationDelay: (idx) => idx * 1,
           animationDuration: 1000,
