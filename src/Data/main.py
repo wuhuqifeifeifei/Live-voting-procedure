@@ -1,38 +1,23 @@
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
-from starlette.requests import Request
-from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from Spider import spider
 import threading
 import uvicorn
 
-# initialize
+# 初始化
 app = FastAPI()
 room_id = 685026           # room_id = input("请输入房间号：")
 stop_flag = threading.Event()
 danmu = spider(room_id, stop_flag)
 data = {}
-template = Jinja2Templates('pages')
 
+# 解决跨域问题
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=['*']
 )
-
-
-# admin默认入口：admin面板，单文件main.py无法访问，最终项目整合时去除注释
-# @app.get("/")
-# async def index(request: Request):
-#     return template.TemplateResponse('index.html', {"request": request})
-
-
-# chart入口：chart界面，单文件main.py无法访问，最终项目整合时去除注释
-# @app.get("/chart")
-# async def chart(request: Request):
-#     return template.TemplateResponse('chart.html', {"request": request})
 
 
 @app.get("/start")
