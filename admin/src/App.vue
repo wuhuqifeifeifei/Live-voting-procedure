@@ -25,11 +25,13 @@ export default {
     TableData
   },
   methods: {
+    //开启爬虫
     start() {
       Start().then(() => {
         console.log("Succeed to start!")
       })
     },
+    //停止爬虫
     stop() {
       Stop().then(() => {
         console.log("Succeed to stop!")
