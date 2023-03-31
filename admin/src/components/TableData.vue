@@ -89,9 +89,6 @@ export default {
     }
   },
   methods: {
-    inTime() {
-
-    },
     //更新数据
     update() {
       timer = window.setInterval(() => {
