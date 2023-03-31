@@ -3,7 +3,6 @@ import zlib
 from aiowebsocket.converses import AioWebSocket
 import json
 
-
 class spider():
     def __init__(self, room_id,stop_flag):
         self.remote = 'ws://broadcastlv.chat.bilibili.com:2244/sub'
@@ -19,7 +18,7 @@ class spider():
             '曾健一':0,
             '段欢宸':0,
             '张馨鑫':0,
-            '哈力木拉提·艾力、王奕番':0,
+            '王奕番':0,
             '何佩恩':0,
             '王梓源':0,
             '王正一':0,
@@ -30,7 +29,7 @@ class spider():
             '王彦澄':0,
             '李伟铭':0,
             '凌越恒':0,
-            '玛迪娜·叶尔卡提':0,
+            '玛迪娜':0,
             '朱寳麗':0,
             '戴领':0,
             '杨方杰':0
@@ -73,10 +72,10 @@ class spider():
         uname = uname
         if str(uid) not in self.Hashmap:
             self.Hashmap[str(uid)] = list()
-        if text == '哈力木拉提·艾力' or text == '王奕番' or text == '哈力木拉提艾力、王奕番' or text == '哈力木拉提艾力' or text == '哈力木拉提.艾力、王奕番' or text == '哈力木拉提.艾力':
-            text = '哈力木拉提·艾力、王奕番'
-        elif text == '玛迪娜叶尔卡提' or text == '玛迪娜.叶尔卡提':
-            text = '玛迪娜·叶尔卡提'
+        if text == '艾力' or text == '哈力木拉提' or text == '哈力木拉提·艾力、王奕番' or text == '哈力木拉提·艾力' or text == '王奕番' or text == '哈力木拉提艾力、王奕番' or text == '哈力木拉提艾力' or text == '哈力木拉提.艾力、王奕番' or text == '哈力木拉提.艾力':
+            text = '王奕番'
+        elif text == '叶尔卡提' or text == '玛迪娜' or text == '玛迪娜·叶尔卡提' or text == '玛迪娜叶尔卡提' or text == '玛迪娜.叶尔卡提':
+            text = '玛迪娜'
         elif text == '朱宝丽': 
             text = '朱寳麗'
         if text in self.ans:

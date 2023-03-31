@@ -12,7 +12,7 @@ class VoteCount extends Component {
   generateInitialData = () => {
     const data = [];
     //trySSE(); //-----------------------------------------------------------
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 14; i++) {
       data.push({
         name: `${i + 1}`,
         value: 0,
@@ -67,9 +67,39 @@ class VoteCount extends Component {
   render() {
     const { data } = this.state;
     const option = {
-      title: {
-        text: "票数统计",
-      },
+      title:{
+        show:true,//false
+        text:"     票数统计",//主标题文本
+        textStyle:{
+            
+            fontStyle:'normal',
+            fontWeight:'normal',
+            fontFamily:'sans-serif',
+            fontSize:20,
+            lineHeight:10,
+            
+            },
+        subtext:"输入姓名进行投票",
+        subtextStyle:{
+            
+            fontStyle:'normal',
+            fontWeight:'normal',
+            fontFamily:'宋体',
+            fontSize:18,
+            lineHeight:18,
+            align:'center',
+            verticalAlign:'middle',
+        },
+        textAlign:'auto',
+        textVerticalAlign:'auto',
+        padding:0,
+        left:'35%',
+        right:'auto',
+        top:'5%',
+        bottom:'auto',
+    },
+
+
       tooltip: {
         trigger: "axis",
         axisPointer: {
@@ -77,52 +107,33 @@ class VoteCount extends Component {
         },
       },
       grid: {
-        top: 50,
-        bottom: 50,
+        top: 100,
+        bottom: 0,
+        left:50,
+        right: "5%",
       },
       xAxis: {
+        left : 200,
         type: "value",
-        boundaryGap: [0, 0.01],
       },
       yAxis: [
         {
+
           axisLabel: {
             formatter: (value, index) => {
               // console.log("data.name=" + data[index].name);
-              if (index > 16) {
-                return `{idx1|${20 - index}} {title|${data[index].name}}`;
-              } else {
-                return `{idx0|${20 - index}} {title|${data[index].name}}`;
-              }
+
+                return data[index].name;
+
             },
-            rich: {
-              idx0: {
-                color: "rgba(100,200,0,1)",
-                backgroundColor: "rgba(100,200,0,0.3)",
-                borderRadius: 100,
-                width: 24,
-                height: 24,
-                align: "center",
-                lineHeight: 24,
-              },
-              idx1: {
-                color: "rgba(200,100,0,1)",
-                backgroundColor: "rgba(200,100,100,0.5)",
-                borderRadius: 100,
-                width: 24,
-                height: 24,
-                align: "center",
-                lineHeight: 24,
-              },
-              title: {
-                width: 20,
-              },
-            },
+            margin:2,
+            fontSize: 16
           },
           type: "category",
         },
       ],
       visualMap: {
+        show:false,
         orient: "horizontal",
         left: "center",
         min: 100,
@@ -141,9 +152,8 @@ class VoteCount extends Component {
             color: "#6495ed",
           },
           name: "票数",
-          borderRadius: 30,
+
           type: "bar",
-          height: 100,
           data: data.map((item) => item),
           animationDelay: (idx) => idx * 1,
           animationDuration: 1000,
@@ -152,7 +162,7 @@ class VoteCount extends Component {
       animationEasing: "elasticOut",
       animationDelayUpdate: (idx) => idx * 1,
     };
-    return <ReactEcharts option={option} style={{ height: 500 }} />;
+    return <ReactEcharts option={option} style={{ height: 700 }} />;
   }
 }
 
