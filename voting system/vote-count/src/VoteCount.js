@@ -67,38 +67,34 @@ class VoteCount extends Component {
   render() {
     const { data } = this.state;
     const option = {
-      title:{
-        show:true,//false
-        text:"     票数统计",//主标题文本
-        textStyle:{
-            
-            fontStyle:'normal',
-            fontWeight:'normal',
-            fontFamily:'sans-serif',
-            fontSize:20,
-            lineHeight:10,
-            
-            },
-        subtext:"输入姓名进行投票",
-        subtextStyle:{
-            
-            fontStyle:'normal',
-            fontWeight:'normal',
-            fontFamily:'宋体',
-            fontSize:18,
-            lineHeight:18,
-            align:'center',
-            verticalAlign:'middle',
+      title: {
+        show: true, //false
+        text: "     票数统计", //主标题文本
+        textStyle: {
+          fontStyle: "normal",
+          fontWeight: "normal",
+          fontFamily: "sans-serif",
+          fontSize: 20,
+          lineHeight: 10,
         },
-        textAlign:'auto',
-        textVerticalAlign:'auto',
-        padding:0,
-        left:'35%',
-        right:'auto',
-        top:'5%',
-        bottom:'auto',
-    },
-
+        subtext: "输入姓名进行投票",
+        subtextStyle: {
+          fontStyle: "normal",
+          fontWeight: "normal",
+          fontFamily: "宋体",
+          fontSize: 18,
+          lineHeight: 18,
+          align: "center",
+          verticalAlign: "middle",
+        },
+        textAlign: "auto",
+        textVerticalAlign: "auto",
+        padding: 0,
+        left: "35%",
+        right: "auto",
+        top: "5%",
+        bottom: "auto",
+      },
 
       tooltip: {
         trigger: "axis",
@@ -109,31 +105,29 @@ class VoteCount extends Component {
       grid: {
         top: 100,
         bottom: 0,
-        left:50,
+        left: 50,
         right: "5%",
       },
       xAxis: {
-        left : 200,
+        left: 200,
         type: "value",
       },
       yAxis: [
         {
-
           axisLabel: {
             formatter: (value, index) => {
               // console.log("data.name=" + data[index].name);
 
-                return data[index].name;
-
+              return data[index].name;
             },
-            margin:2,
-            fontSize: 16
+            margin: 2,
+            fontSize: 16,
           },
           type: "category",
         },
       ],
       visualMap: {
-        show:false,
+        show: false,
         orient: "horizontal",
         left: "center",
         min: 100,
@@ -162,7 +156,7 @@ class VoteCount extends Component {
       animationEasing: "elasticOut",
       animationDelayUpdate: (idx) => idx * 1,
     };
-    return <ReactEcharts option={option} style={{ height: 700 }} />;
+    return <ReactEcharts option={option} style={{ height: 650 }} />;
   }
 }
 
