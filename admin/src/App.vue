@@ -8,7 +8,8 @@
           <div class="button"><el-button type="primary" @click="stop">暂停投票</el-button></div>
           <div class="button"><el-button type="primary" @click="resume">继续投票</el-button></div>
           <div class="button"><el-button type="primary" @click="reset">重置投票</el-button></div>
-          <div class="button"><el-button type="primary" @click="dispaly">打开图表</el-button></div>
+          <div class="button"><el-link href="../../voting system/vote-count/build/index.html"><el-button type="primary"
+                @click="display">打开图表</el-button></el-link></div>
         </el-aside>
         <el-main>
           <TableData></TableData>
@@ -53,7 +54,6 @@ export default {
     },
     //打开图表（待定）
     display() {
-
     }
   }
 }
