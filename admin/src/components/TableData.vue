@@ -62,7 +62,7 @@ export default {
         name: '雷昌昊',
         votes: 0
       }, {
-        name: '玛迪娜叶尔卡提',
+        name: '玛迪娜',
         votes: 0
       }, {
         name: '张馨鑫',
